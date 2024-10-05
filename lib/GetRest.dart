@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, camel_case_types
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -37,25 +39,33 @@ class _homePageState extends State<homePage> {
                                   color: Color.fromARGB(255, 0, 0, 0),
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold)),*/
-                          title: Text(snap.data![i].id.toString(),
-                              //snap.data![i].img,
-                              style: const TextStyle(
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold)),
-                          subtitle: Text(snap.data![i].nombre,
-                              //snap.data![i].precio.toString() + " pesos",
-                              style: const TextStyle(
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold)),
+                          title: Text(
+                            snap.data![i].id.toString(),
+                            //snap.data![i].img,
+                            style: const TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          subtitle: Text(
+                            snap.data![i].nombre,
+                            //snap.data![i].precio.toString() + " pesos",
+                            style: const TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                           trailing: Text(
-                              snap.data![i].precio.toString() + " pesos",
-                              //snap.data![i].id.toString(),
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold)),
+                            "${snap.data![i].precio} pesos",
+                            //snap.data![i].id.toString(),
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                           /*PopupMenuButton(
                             itemBuilder: (context) {
                               return [
@@ -98,10 +108,10 @@ class _homePageState extends State<homePage> {
     final lista = List.from(jsonDecode(res.body));
 
     List<Producto> productos = [];
-    lista.forEach((element) {
+    for (var element in lista) {
       final Producto product = Producto.fromJson(element);
       productos.add(product);
-    });
+    }
     return productos;
   }
 }
@@ -123,10 +133,11 @@ class Producto {
 
   factory Producto.fromJson(Map json) {
     return Producto(
-        id: json["id"],
-        nombre: json["nombre"],
-        img: json["img"],
-        precio: json["precio"],
-        fechaCracion: json["fechaCracion"]);
+      id: json["id"],
+      nombre: json["nombre"],
+      img: json["img"],
+      precio: json["precio"],
+      fechaCracion: json["fechaCracion"],
+    );
   }
 }

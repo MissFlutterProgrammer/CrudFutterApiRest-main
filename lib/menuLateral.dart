@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, avoid_types_as_parameter_names
 
+import 'package:flutter/material.dart';
 import 'actualizar.dart';
 import 'eliminar.dart';
 import 'main.dart';
@@ -13,12 +14,14 @@ class menulateral extends StatelessWidget {
       child: ListView(
         // Remove padding
         padding: EdgeInsets.zero,
-
         children: [
           UserAccountsDrawerHeader(
             accountName: const Text(
               'EdilsonHP',
-              style: TextStyle(fontSize: 25.0, fontFamily: 'AkayaTelivigala'),
+              style: TextStyle(
+                fontSize: 25.0,
+                fontFamily: 'AkayaTelivigala',
+              ),
             ),
             accountEmail: Text(''),
             otherAccountsPictures: const [
@@ -40,9 +43,10 @@ class menulateral extends StatelessWidget {
             decoration: const BoxDecoration(
               color: Colors.grey,
               image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: AssetImage('img/Api_portada.png'),
-                  opacity: 10.0),
+                fit: BoxFit.fill,
+                image: AssetImage('img/Api_portada.png'),
+                opacity: 10.0,
+              ),
             ),
           ),
           InkWell(
@@ -52,7 +56,10 @@ class menulateral extends StatelessWidget {
             ),
             onTap: () {
               Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (BuildContext) => const MyApp()));
+                MaterialPageRoute(
+                  builder: (BuildContext) => const MyApp(),
+                ),
+              );
             },
           ),
           InkWell(
@@ -61,8 +68,11 @@ class menulateral extends StatelessWidget {
               title: Text('Actualizar'),
             ),
             onTap: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (BuildContext) => const Actualizar()));
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (BuildContext) => const Actualizar(),
+                ),
+              );
             },
           ),
           InkWell(
@@ -71,8 +81,11 @@ class menulateral extends StatelessWidget {
               title: Text('Eliminar'),
             ),
             onTap: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (BuildContext) => const Eliminar()));
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (BuildContext) => const Eliminar(),
+                ),
+              );
             },
           ),
         ],

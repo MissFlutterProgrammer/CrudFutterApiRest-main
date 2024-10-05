@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, avoid_print
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -29,7 +31,6 @@ class _TodoListPageState extends State<TodoListPage> {
   // List items = [];
   @override
   /*void initState() {
-    // TODO: implement initState
     super.initState();
     fetchTodo();
   }*/
@@ -82,7 +83,10 @@ class _AddTodoPageState extends State<AddTodoPage> {
           SizedBox(
             height: 20,
           ),
-          ElevatedButton(onPressed: Eliminar, child: Text('Eliminar'))
+          ElevatedButton(
+            onPressed: Eliminar,
+            child: Text('Eliminar'),
+          )
         ],
       ),
     );
@@ -95,8 +99,9 @@ class _AddTodoPageState extends State<AddTodoPage> {
     };
     final url = 'https://mi-api-rest.fly.dev/api/eliminar/$id';
     final uri = Uri.parse(url);
-    final response = await http.delete(uri,
-        body: jsonEncode(body), headers: {'Content-Type': 'application/json'});
+    final response = await http.delete(uri, body: jsonEncode(body), headers: {
+      'Content-Type': 'application/json',
+    });
     if (response.statusCode == 200) {
       //poner esto una vez emulado en el celular
       idController.text = '';
@@ -119,8 +124,12 @@ class _AddTodoPageState extends State<AddTodoPage> {
   }*/
   void showSuccesMenssageEliminar(String message) {
     final snackBar = SnackBar(
-      content: Text(message,
-          style: TextStyle(color: Color.fromARGB(255, 254, 254, 254))),
+      content: Text(
+        message,
+        style: TextStyle(
+          color: Color.fromARGB(255, 254, 254, 254),
+        ),
+      ),
       backgroundColor: Colors.green,
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -130,7 +139,9 @@ class _AddTodoPageState extends State<AddTodoPage> {
     final snackBar = SnackBar(
       content: Text(
         message,
-        style: TextStyle(color: Color.fromARGB(255, 4, 158, 22)),
+        style: TextStyle(
+          color: Color.fromARGB(255, 4, 158, 22),
+        ),
       ),
       backgroundColor: Colors.red,
     );

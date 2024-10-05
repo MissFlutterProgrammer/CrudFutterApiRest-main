@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, avoid_print
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -33,7 +35,6 @@ class _TodoListPageState extends State<TodoListPage> {
   // List items = [];
   @override
   /*void initState() {
-    // TODO: implement initState
     super.initState();
     fetchTodo();
   }*/
@@ -85,18 +86,17 @@ class _AddTodoPageState extends State<AddTodoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Center(
-        child: Text('CRUD'),
-      )),
+        title: Center(
+          child: Text('CRUD'),
+        ),
+      ),
       body: ListView(
         padding: EdgeInsets.all(20),
         children: [
           Center(
             child: Text("Agregar"),
           ),
-          SizedBox(
-            height: 15,
-          ),
+          SizedBox(height: 15),
           TextField(
             controller: idControllerAgregar,
             decoration: InputDecoration(hintText: 'id'),
@@ -120,19 +120,16 @@ class _AddTodoPageState extends State<AddTodoPage> {
             controller: fechaCracionControllerAgregar,
             decoration: InputDecoration(hintText: 'Dia-Mes-Año'),
           ),
-          SizedBox(
-            height: 20,
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: Agregar,
+            child: Text('Agregar'),
           ),
-          ElevatedButton(onPressed: Agregar, child: Text('Agregar')),
-          const SizedBox(
-            height: 25.0,
-          ),
+          const SizedBox(height: 25.0),
           Center(
             child: Text("Actualizar"),
           ),
-          SizedBox(
-            height: 15,
-          ),
+          SizedBox(height: 15),
           TextField(
             controller: idControllerActualizar,
             decoration: InputDecoration(hintText: 'id'),
@@ -156,27 +153,22 @@ class _AddTodoPageState extends State<AddTodoPage> {
             controller: fechaCracionControllerActualizar,
             decoration: InputDecoration(hintText: 'Dia-Mes-Año'),
           ),
-          SizedBox(
-            height: 20,
-          ),
+          SizedBox(height: 20),
           ElevatedButton(onPressed: Actualizar, child: Text('Actualizar')),
-          const SizedBox(
-            height: 25.0,
-          ),
+          const SizedBox(height: 25.0),
           Center(
             child: Text("Eliminar"),
           ),
-          SizedBox(
-            height: 15,
-          ),
+          SizedBox(height: 15),
           TextField(
             controller: idControllerEliminar,
             decoration: InputDecoration(hintText: 'id'),
           ),
-          SizedBox(
-            height: 20,
-          ),
-          ElevatedButton(onPressed: Eliminar, child: Text('Eliminar'))
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: Eliminar,
+            child: Text('Eliminar'),
+          )
         ],
       ),
     );
@@ -197,8 +189,9 @@ class _AddTodoPageState extends State<AddTodoPage> {
     };
     final url = 'https://mi-api-rest.fly.dev/api/nuevo';
     final uri = Uri.parse(url);
-    final response = await http.post(uri,
-        body: jsonEncode(body), headers: {'Content-Type': 'application/json'});
+    final response = await http.post(uri, body: jsonEncode(body), headers: {
+      'Content-Type': 'application/json',
+    });
     if (response.statusCode == 200) {
       //poner esto una vez emulado en el celular
       idControllerAgregar.text = '';
@@ -217,8 +210,12 @@ class _AddTodoPageState extends State<AddTodoPage> {
 
   void showSuccesMenssageAgregar(String message) {
     final snackBar = SnackBar(
-      content: Text(message,
-          style: TextStyle(color: Color.fromARGB(255, 254, 254, 254))),
+      content: Text(
+        message,
+        style: TextStyle(
+          color: Color.fromARGB(255, 254, 254, 254),
+        ),
+      ),
       backgroundColor: Colors.green,
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -228,7 +225,9 @@ class _AddTodoPageState extends State<AddTodoPage> {
     final snackBar = SnackBar(
       content: Text(
         message,
-        style: TextStyle(color: Color.fromARGB(255, 254, 254, 254)),
+        style: TextStyle(
+          color: Color.fromARGB(255, 254, 254, 254),
+        ),
       ),
       backgroundColor: Colors.red,
     );
@@ -250,8 +249,9 @@ class _AddTodoPageState extends State<AddTodoPage> {
     };
     final url = 'https://mi-api-rest.fly.dev/api/actualizar/$id';
     final uri = Uri.parse(url);
-    final response = await http.put(uri,
-        body: jsonEncode(body), headers: {'Content-Type': 'application/json'});
+    final response = await http.put(uri, body: jsonEncode(body), headers: {
+      'Content-Type': 'application/json',
+    });
     if (response.statusCode == 200) {
       //poner esto una vez emulado en el celular
       idControllerActualizar.text = '';
@@ -274,8 +274,12 @@ class _AddTodoPageState extends State<AddTodoPage> {
   }*/
   void showSuccesMenssageActualizar(String message) {
     final snackBar = SnackBar(
-      content: Text(message,
-          style: TextStyle(color: Color.fromARGB(255, 254, 254, 254))),
+      content: Text(
+        message,
+        style: TextStyle(
+          color: Color.fromARGB(255, 254, 254, 254),
+        ),
+      ),
       backgroundColor: Colors.green,
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -285,7 +289,9 @@ class _AddTodoPageState extends State<AddTodoPage> {
     final snackBar = SnackBar(
       content: Text(
         message,
-        style: TextStyle(color: Color.fromARGB(255, 54, 174, 11)),
+        style: TextStyle(
+          color: Color.fromARGB(255, 54, 174, 11),
+        ),
       ),
       backgroundColor: Colors.red,
     );
@@ -299,8 +305,9 @@ class _AddTodoPageState extends State<AddTodoPage> {
     };
     final url = 'https://mi-api-rest.fly.dev/api/eliminar/$id';
     final uri = Uri.parse(url);
-    final response = await http.delete(uri,
-        body: jsonEncode(body), headers: {'Content-Type': 'application/json'});
+    final response = await http.delete(uri, body: jsonEncode(body), headers: {
+      'Content-Type': 'application/json',
+    });
     if (response.statusCode == 200) {
       //poner esto una vez emulado en el celular
       idControllerEliminar.text = '';
@@ -323,8 +330,12 @@ class _AddTodoPageState extends State<AddTodoPage> {
   }*/
   void showSuccesMenssageEliminar(String message) {
     final snackBar = SnackBar(
-      content: Text(message,
-          style: TextStyle(color: Color.fromARGB(255, 254, 254, 254))),
+      content: Text(
+        message,
+        style: TextStyle(
+          color: Color.fromARGB(255, 254, 254, 254),
+        ),
+      ),
       backgroundColor: Colors.green,
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -334,7 +345,9 @@ class _AddTodoPageState extends State<AddTodoPage> {
     final snackBar = SnackBar(
       content: Text(
         message,
-        style: TextStyle(color: Color.fromARGB(255, 4, 158, 22)),
+        style: TextStyle(
+          color: Color.fromARGB(255, 4, 158, 22),
+        ),
       ),
       backgroundColor: Colors.red,
     );

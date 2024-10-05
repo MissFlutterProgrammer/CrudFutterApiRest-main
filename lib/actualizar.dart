@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, avoid_print
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -29,7 +31,6 @@ class _TodoListPageState extends State<TodoListPage> {
   // List items = [];
   @override
   /*void initState() {
-    // TODO: implement initState
     super.initState();
     fetchTodo();
   }*/
@@ -38,7 +39,9 @@ class _TodoListPageState extends State<TodoListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text("Api Rest Actualizar")),
+        title: Center(
+          child: Text("Api Rest Actualizar"),
+        ),
       ),
       drawer: const menulateral(),
       body: homePage(),
@@ -102,9 +105,7 @@ class _AddTodoPageState extends State<AddTodoPage> {
             controller: fechaCracionController,
             decoration: InputDecoration(hintText: 'Dia-Mes-Año'),
           ),
-          SizedBox(
-            height: 20,
-          ),
+          SizedBox(height: 20),
           ElevatedButton(onPressed: Actualizar, child: Text('Actualizar'))
         ],
       ),
@@ -150,8 +151,12 @@ class _AddTodoPageState extends State<AddTodoPage> {
   }*/
   void showSuccesMenssageActualizar(String message) {
     final snackBar = SnackBar(
-      content: Text(message,
-          style: TextStyle(color: Color.fromARGB(255, 254, 254, 254))),
+      content: Text(
+        message,
+        style: TextStyle(
+          color: Color.fromARGB(255, 254, 254, 254),
+        ),
+      ),
       backgroundColor: Colors.green,
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -161,7 +166,9 @@ class _AddTodoPageState extends State<AddTodoPage> {
     final snackBar = SnackBar(
       content: Text(
         message,
-        style: TextStyle(color: Color.fromARGB(255, 54, 174, 11)),
+        style: TextStyle(
+          color: Color.fromARGB(255, 54, 174, 11),
+        ),
       ),
       backgroundColor: Colors.red,
     );
