@@ -154,7 +154,10 @@ class _AddTodoPageState extends State<AddTodoPage> {
             decoration: InputDecoration(hintText: 'Dia-Mes-Año'),
           ),
           SizedBox(height: 20),
-          ElevatedButton(onPressed: Actualizar, child: Text('Actualizar')),
+          ElevatedButton(
+            onPressed: Actualizar,
+            child: Text('Actualizar'),
+          ),
           const SizedBox(height: 25.0),
           Center(
             child: Text("Eliminar"),
